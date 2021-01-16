@@ -8,9 +8,15 @@ app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 
 app.get('/', defaultHandler);
+app.get('/searches/new', searchHandler);
+
 
 function defaultHandler(req, res){
   res.status(200).render('index');
+}
+
+function searchHandler(req, res){
+  //
 }
 
 
