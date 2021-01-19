@@ -13,9 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get('/', defaultHandler);
-app.get('/searches', searchesHandler);
-// app.get('/newSearches', newSearchHandler);
-
+app.get('/newSearches', newSearchHandler);
+// app.get('/searches', searchesHandler);
 
 
 function defaultHandler(req, res) {
