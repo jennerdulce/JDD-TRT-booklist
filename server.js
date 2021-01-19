@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get('/', defaultHandler);
-app.get('/searches', searchesHandler);
-// app.get('/newSearches', newSearchHandler);
+// app.get('/searches', searchesHandler);
+app.post('/newSearches', newSearchHandler);
 
 
 
@@ -33,15 +33,15 @@ function defaultHandler(req, res) {
 // }
 
 function newSearchHandler(req, res) {
-  console.log('req.query >>>>>>>>> ', req.query);
+  console.log('req.query >>>>>>>>> ', req.body);
 
   let url = `https://www.googleapis.com/books/v1/volumes?q=`;
-  if (req.query.keyword === 'title') {
-    url += `+intitle:${req.query.search}`;
+  if (req.body.keyword === 'title') {
+    url += `+intitle:${req.body.search}`;
   }
 
-  if (req.query.keyword === 'author') {
-    url += `+inauthor:${req.query.search}`;
+  if (req.body.keyword === 'author') {
+    url += `+inauthor:${req.body.search}`;
   }
 
   console.log('==========================', url);
