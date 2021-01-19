@@ -14,23 +14,23 @@ app.set('view engine', 'ejs');
 
 app.get('/', defaultHandler);
 app.get('/searches', searchesHandler);
-app.get('/newSearches', newSearchHandler);
+// app.get('/newSearches', newSearchHandler);
 
 
 
 function defaultHandler(req, res) {
-  res.status(200).render('pages/index')
-    .catch(() => {
-      handleError(res);
-    });
-}
-
-function searchesHandler(req, res) {
   res.status(200).render('pages/searches/show')
     .catch(() => {
       handleError(res);
     });
 }
+
+// function searchesHandler(req, res) {
+//   res.status(200).render('pages/searches/show')
+//     .catch(() => {
+//       handleError(res);
+//     });
+// }
 
 function newSearchHandler(req, res) {
   console.log('req.query >>>>>>>>> ', req.query);
