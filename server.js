@@ -17,7 +17,8 @@ app.post('/newSearches', newSearchHandler);
 
 
 function defaultHandler(req, res) {
-  res.status(200).render('pages/searches/show')
+  res.status(200).render('pages/searches/show');
+}
 
 function newSearchHandler(req, res) {
   console.log('req.query >>>>>>>>> ', req.body);
@@ -65,4 +66,3 @@ function Book(data) {
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
-
