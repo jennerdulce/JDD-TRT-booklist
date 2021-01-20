@@ -1,5 +1,3 @@
-
-
 /* BOOKS LAYOUT */
 #books {
   display: flex;
@@ -107,6 +105,12 @@
   text-align: center;
   width: 960px;
   margin: auto;
+  background-color: rgba(173, 173, 173, 0.799);
+}
+
+#show form {
+  width: 720px;
+  margin: auto
 }
 
 #show h1, #show p {
@@ -149,32 +153,40 @@
 }
 
 #show input[type="text"] {
+  color: black;
   margin-top: 30px;
   font-size: 30px;
   border: none;
   border-radius: 10px;
-  padding: 30px 300px;
+  padding: 35px 0px 35px 30px;
+  width: 100%;
   /* text-align: left; */
 }
 
-#show #title, #show #author {
+#show div {
   margin-top: 30px;
+  padding: 30px 0px 30px 30px;
+  text-align: left;
+}
+
+#show #title, #show #author {
   font-size: 30px;
   border: none;
   border-radius: 10px;
-  padding: 30px 250px;
   background-color: rgb(222, 222, 222);
   /* text-align: left; */
+  /* padding: 30px 250px; */
 }
 
 #show input[type="submit"] {
   margin-top: 30px;
   font-size: 46px;
+  width: 100%;
   border: none;
   border-radius: 10px;
   background-color: black;
   color: white;
-  padding: 40px 100px;
+  padding: 30px 0px;
   cursor: pointer;
 }
 
@@ -182,11 +194,32 @@
   color: black
 }
 
+.social:hover, .social:active, .social:link {
+  color: white;
+  text-decoration: none;
+  margin: 30px 0px
+}
 
-#footer {
-  margin-top: 30px;
+footer {
+  background-color: black;
+  margin: auto;
+  width: 960px;
+  margin-top: 400px;
+  color: white;
   display: flex;
   justify-content: space-around;
   font-size: 48px;
-  /* text-align: center; */
+  text-align: center;
+}
+
+footer a {
+  color: white
+}
+
+@media (min-width: 1025px){
+  body {
+    min-width: 960px;
+    margin: auto;
+    margin-top: 100px;
+  }
 }
