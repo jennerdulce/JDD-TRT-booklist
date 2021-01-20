@@ -13,24 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get('/', defaultHandler);
-
-// app.get('/searches', searchesHandler);
 app.post('/newSearches', newSearchHandler);
 
 
 function defaultHandler(req, res) {
   res.status(200).render('pages/searches/show')
-    .catch(() => {
-      handleError(res);
-    });
-}
-
-// function searchesHandler(req, res) {
-//   res.status(200).render('pages/searches/show')
-//     .catch(() => {
-//       handleError(res);
-//     });
-// }
 
 function newSearchHandler(req, res) {
   console.log('req.query >>>>>>>>> ', req.body);
