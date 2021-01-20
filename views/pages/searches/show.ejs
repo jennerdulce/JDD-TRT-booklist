@@ -9,32 +9,35 @@
   <title>Booklist App</title>
 </head>
 
-<body id="show">
+<body>
   <!-- <p><a href="/books">Book list</a></p> -->
 
-  <nav>
-    <h1>Best Books!</h1>
-    <p>[ ]</p>
-  </nav>
-  <h2>Search by Title or Author</h2>
-  <form action="/newSearches" method="POST">
-    <input type="text" name="search" id="" placeholder="Enter a title or author">
-    <div id="title">
-      <label for="title">Title</label>
-      <input type="radio" id="title" value="title" name="keyword">
-    </div>
-    <div id="author">
-      <label for="author">Author</label>
-      <input type="radio" id="author" value="author" name="keyword">
-    </div>
-    <input type="submit" value="Search the Google Book API">
-  </form>
-  <footer>
-    <a href="#">Twitter</a>
-    <a href="#">Facebook</a>
-    <a href="#">Instagram</a>
-    <a href="#">Other</a>
-  </footer>
+  <div id="show">
+    <nav>
+      <h1>Best Books!</h1>
+      <p>[ ]</p>
+    </nav>
+    <h2>Search by Title or Author</h2>
+    <form action="/newSearches" method="POST">
+      <input type="text" name="search" id="" placeholder="Enter a title or author">
+      <div id="title">
+        <label for="title">Title</label>
+        <input type="radio" id="title" value="title" name="keyword">
+      </div>
+      <div id="author">
+        <label for="author">Author</label>
+        <input type="radio" id="author" value="author" name="keyword">
+      </div>
+      <input type="submit" value="Search the Google Book API">
+    </form>
+    <footer>
+      <a class="social" href="#">Twitter</a>
+      <a class="social" href="#">Facebook</a>
+      <a class="social" href="#">Instagram</a>
+      <a class="social" href="#">Other</a>
+    </footer>
+  </div>
+  
 </body>
 
 </html>
