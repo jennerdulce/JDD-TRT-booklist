@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 
 client.on('error', err => {
   throw err;
-}).catch(err => console.log(err));
+});
 
 // Routes
 app.get('/', defaultHandler);
