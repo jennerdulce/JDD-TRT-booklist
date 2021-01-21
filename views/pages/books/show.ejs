@@ -15,18 +15,11 @@
     <p id="burger">[ ]</p>
   </nav>
   <h2> <%= data.length %> Search Results</h2>
-  <p><a href="/newSearches">New Search</a></p> 
+  <p><a href="/">Home</a></p> 
   <div id="books-div">
 
-    <% data.forEach(value => { %>
-    <section>
-      <img src="<%= value.thumbnail%>" alt="<%= value.title%>">
-      <h3><%= value.title%></h3>
-      <h4><%= value.author%></h4>
-      <p><%= value.description%></p> 
-    <p><a href="/books/<%= value.id %>">View Details</a></p> 
- </section>
-    <%})%>
+    <%- include('detail') %>
+
   </div>
   <footer>
     <a href="">Twitter</a>
