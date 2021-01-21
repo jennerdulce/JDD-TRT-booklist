@@ -14,7 +14,9 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-client.on('error', err => console.log(err));
+client.on('error', err => {
+  throw err;
+});
 
 // Routes
 app.get('/', defaultHandler);
@@ -31,9 +33,10 @@ function defaultHandler(req, res) {
       res.status(200).render('pages/index', { data: databaseBooks });
     })
     .catch(err => {
-      handleError(res);
-      throw err;
+      // handleError(res);
+      console.log(err);
     });
+
 }
 
 function bookDetails (req, res) {
@@ -47,8 +50,8 @@ function bookDetails (req, res) {
       res.status(200).render('pages/books/show', { data: details});
     })
     .catch(err => {
-      handleError(res);
-      throw err;
+      // handleError(res);
+      console.log(err);
     });
 
 }
@@ -76,10 +79,11 @@ function newSearchHandler(req, res) {
       // console.log('we are in the superagent ============');
       res.status(200).render('pages/searches/new', { data: books });
     })
-    .catch(() => {
-      handleError(res);
-      throw err;
+    .catch(err => {
+      // handleError(res);
+      console.log(err);
     });
+
 }
 
 function handleError(res){
