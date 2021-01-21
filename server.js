@@ -39,15 +39,15 @@ function defaultHandler(req, res) {
 
 }
 
-function bookDetails (req, res) {
+function bookDetails(req, res) {
   let SQL = 'SELECT * FROM books WHERE id = $1';
   let values = [req.params.id];
 
   client.query(SQL, values)
-    .then( results => {
+    .then(results => {
       let details = results.rows[0];
       console.log(details);
-      res.status(200).render('pages/books/show', { data: details});
+      res.status(200).render('pages/books/show', { data: details });
     })
     .catch(err => {
       // handleError(res);
@@ -86,7 +86,7 @@ function newSearchHandler(req, res) {
 
 }
 
-function handleError(res){
+function handleError(res) {
   return res.status(500).render('pages/error');
 }
 
@@ -103,7 +103,7 @@ function Book(data) {
 
 
 client.connect()
-  .then( () => {
+  .then(() => {
     app.listen(PORT, () => {
       console.log(`Listening on port: ${PORT}`);
       console.log('Connected to database:', client.connectionParameters.database);
