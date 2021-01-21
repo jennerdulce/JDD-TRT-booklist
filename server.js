@@ -1,39 +1,38 @@
 'use strict';
 
+// Bring in dependencies
+require('dotenv').config();
 const express = require('express');
 const superagent = require('superagent');
-require('dotenv').config();
 const pg = require('pg');
 
-
+// Start Application
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(express.static('./public'));
-
 const client = new pg.Client(process.env.DATABASE_URL);
-client.connect();
-client.on('error', err => console.log(err));
-console.log('Connected to database:', client.connectionParameters.database);
-// for post
-// change .get => .post
-// change method="GET" => method="POST"
+app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
+client.on('error', err => console.log(err));
+
+// Routes
 app.get('/', defaultHandler);
 app.get('/books/:id', bookDetails);
 app.post('/newSearches', newSearchHandler);
 
 
-
+// Handlers
 function defaultHandler(req, res) {
-  // res.status(200).render('pages/searches/show');
   let SQL = 'SELECT * FROM books';
   client.query(SQL)
     .then(results => {
-      // console.log(results);
       let databaseBooks = results.rows;
       res.status(200).render('pages/index', { data: databaseBooks });
+    })
+    .catch(err => {
+      handleError(res);
+      throw err;
     });
 }
 
@@ -46,12 +45,16 @@ function bookDetails (req, res) {
       let details = results.rows[0];
       console.log(details);
       res.status(200).render('pages/books/show', { data: details});
+    })
+    .catch(err => {
+      handleError(res);
+      throw err;
     });
 
 }
 
 function newSearchHandler(req, res) {
-  console.log('req.query >>>>>>>>> ', req.body);
+  // console.log('req.query >>>>>>>>> ', req.body);
 
   let url = `https://www.googleapis.com/books/v1/volumes?q=`;
   if (req.body.keyword === 'title') {
@@ -62,19 +65,20 @@ function newSearchHandler(req, res) {
     url += `+inauthor:${req.body.search}`;
   }
 
-  console.log('==========================', url);
+  // console.log('==========================', url);
   superagent.get(url)
     .then(value => {
-      console.log('value.body >>>>>>>>> ', value.body.items);
+      // console.log('value.body >>>>>>>>> ', value.body.items);
       const bookData = value.body.items;
       const books = bookData.map(value => {
         return new Book(value);
       });
-      console.log('we are in the superagent ============');
+      // console.log('we are in the superagent ============');
       res.status(200).render('pages/searches/new', { data: books });
     })
     .catch(() => {
       handleError(res);
+      throw err;
     });
 }
 
@@ -82,9 +86,7 @@ function handleError(res){
   return res.status(500).render('pages/error');
 }
 
-
-
-let placeholder = `https://i.imgur.com/J5LVHEL.jpg`;
+// let placeholder = `https://i.imgur.com/J5LVHEL.jpg`;
 
 function Book(data) {
   this.title = data.volumeInfo.title;
@@ -95,6 +97,12 @@ function Book(data) {
   this.bookshelf = data.volumeInfo.mainCategory;
 }
 
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
-});
+
+client.connect()
+  .then( () => {
+    app.listen(PORT, () => {
+      console.log(`Listening on port: ${PORT}`);
+      console.log('Connected to database:', client.connectionParameters.database);
+    });
+  });
+
