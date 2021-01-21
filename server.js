@@ -16,13 +16,12 @@ app.set('view engine', 'ejs');
 
 client.on('error', err => {
   throw err;
-});
+}).catch(err => console.log(err));
 
 // Routes
 app.get('/', defaultHandler);
 app.get('/books/:id', bookDetails);
 app.post('/newSearches', newSearchHandler);
-
 
 // Handlers
 function defaultHandler(req, res) {
@@ -108,5 +107,5 @@ client.connect()
       console.log(`Listening on port: ${PORT}`);
       console.log('Connected to database:', client.connectionParameters.database);
     });
-  });
+  }).catch(err => console.log(err));
 
