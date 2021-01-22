@@ -1,0 +1,35 @@
+<html lang="en">
+
+<head>
+  <%- include('../books/head') %>
+</head>
+
+<body id="books">
+  <%- include('../books/navbar') %>
+  <h2> <%= data.length %> Search Results</h2>
+  <p><a href="/newSearch">New Search</a></p>
+  <div id="books-div">
+
+    <% data.forEach(value => { %>
+    <section>
+      <img src="<%= value.thumbnail%>" alt="<%= value.title%>">
+      <h3><%= value.title%></h3>
+      <h4><%= value.author%></h4>
+      <p><%= value.description%></p>
+      <p><a href="/books/<%= value.id %>">View Details</a></p>
+      <form action="/addToFavorites" method="POST">
+        <input type="text" name="title" value="<%= value.title%>">
+        <input type="text" name="author" value="<%= value.author%>">
+        <input type="text" name="description" value="<%= value.description%>">
+        <input type="text" name="thumbnail" value="<%= value.imageLinks.thumbnail%>">
+        <input type="text" name="isbn" value="<%= industryIdentifiers[0].identifier%>">
+        <input type="text" name="bookshelf" value="<%= data.mainCategory%>">
+        <input type="submit" value="Add to Favorites">
+      </form>
+    </section>
+    <%})%>
+  </div>
+  <%- include('../books/footer') %>
+</body>
+
+</html>

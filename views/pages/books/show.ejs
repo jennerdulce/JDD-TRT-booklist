@@ -1,29 +1,16 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles/reset.css" type="text/css">
-  <link rel="stylesheet" href="/styles/base.css" type="text/css">
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css">
-  <title>Booklist App</title>
+  <%- include('head') %>
 </head>
 
 <body id="books">
-  <nav>
-    <h1>Best Books!</h1>
-    <p id="burger">[ ]</p>
-  </nav>
+  <%- include('navbar') %>
   <p><a href="/">Home</a></p> 
   <div id="books-div">
     <%- include('detail') %>
   </div>
-  <footer>
-    <a href="">Twitter</a>
-    <a href="">Facebook</a>
-    <a href="">Instagram</a>
-    <a href="">Other</a>
-  </footer>
+  <%- include('footer') %>
 </body>
 
 </html>
