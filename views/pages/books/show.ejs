@@ -4,13 +4,14 @@
   <%- include('head') %>
 </head>
 
-<body id="books">
-  <%- include('navbar') %>
-  <p><a href="/">Home</a></p> 
-  <div id="books-div">
-    <%- include('detail') %>
+<body>
+  <div id="container">
+    <%- include('navbar') %>
+    <div id="show-div">
+      <%- include('detail') %>
+    </div>
+    <%- include('footer') %>
   </div>
-  <%- include('footer') %>
 </body>
 
 </html>

@@ -21,9 +21,10 @@ client.on('error', err => {
 // Routes
 app.get('/', defaultHandler);
 app.get('/books/:id', viewDetailsHandler);
+app.post('/books', booksHandler);
 app.get('/newSearch', newSearchHandler);
 app.post('/apiSearch', apiSearchHandler);
-// app.post('/addToFavorites', favoritesHandler);
+
 
 // Handlers
 function defaultHandler(req, res) {
@@ -60,7 +61,7 @@ function newSearchHandler(req, res) {
 }
 
 function apiSearchHandler(req, res) {
-  // console.log('req.body >>>>>>>>> ', req.body);
+  console.log('req.body >>>>>>>>> ', req.body);
 
   let url = `https://www.googleapis.com/books/v1/volumes?q=`;
   if (req.body.keyword === 'title') {
@@ -79,6 +80,7 @@ function apiSearchHandler(req, res) {
       const books = bookData.map(value => {
         return new Book(value.volumeInfo);
       });
+      console.log(books);
       // console.log('we are in the superagent ============');
       res.status(200).render('pages/searches/results', { data: books });
     })
@@ -89,16 +91,25 @@ function apiSearchHandler(req, res) {
 
 }
 
-// function favoritesHandler(req, res) {
-//   let SQL = `INSERT INTO favorites
-//             (title, author, description, thumbnail, isbn, bookshelf)
-//             VALUES ($1, $2, $3, $4, $5, $6);`;
-//   let safeValues = [req.body.title, req.body.author, req.body.description, req.body.thumbnail, req.body.isbn, req.body.bookshelf];
-//   client.query(SQL, safeValues)
-//     .then(() => {
-//       alert(`${req.body.title} added to your favorites list!`);
-//     });
-// }
+function booksHandler(req, res) {
+  let SQL = `INSERT INTO books
+            (title, author, description, thumbnail, isbn, bookshelf)
+            VALUES ($1, $2, $3, $4, $5, $6);`;
+  let safeValues = [req.body.title, req.body.author, req.body.description, req.body.thumbnail, req.body.isbn, req.body.bookshelf];
+  client.query(SQL, safeValues)
+    .then(() => {
+      console.log(`${req.body.title} added to your favorites list!`);
+    });
+
+  let retrieveBook = 'SELECT * FROM books WHERE title = $1';
+  let values = [req.body.title];
+  client.query(retrieveBook, values)
+    .then(results => {
+      let details = results.rows[0];
+      res.status(200).render('pages/books/show', { data: details }
+      );
+    });
+}
 
 function handleError(res) {
   return res.status(500).render('pages/error');
@@ -107,11 +118,11 @@ function handleError(res) {
 // let placeholder = `https://i.imgur.com/J5LVHEL.jpg`;
 function Book(data) {
   this.title = data.title;
-  this.author = data.author;
+  this.author = data.authors;
   this.description = data.description || '*** Description current unavailable ***';
   this.thumbnail = data.imageLinks.thumbnail || null;
   this.isbn = data.industryIdentifiers[0].identifier;
-  this.bookshelf = data.mainCategory;
+  this.bookshelf = data.categories;
 }
 
 

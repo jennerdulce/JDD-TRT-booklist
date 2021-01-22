@@ -4,12 +4,15 @@
   <%- include('../books/head') %>
 </head>
 
-<body id="books">
+
+<div id="container">
+
+  <body id="results">
   <%- include('../books/navbar') %>
   <h2> <%= data.length %> Search Results</h2>
-  <p><a href="/newSearch">New Search</a></p>
-  <p><a href="/">Home</a></p>
-  <div id="books-div">
+  <!-- <p><a href="/newSearch">New Search</a></p>
+    <p><a href="/">Home</a></p> -->
+  <div id="results-div">
 
     <% data.forEach(value => { %>
     <section>
@@ -17,20 +20,21 @@
       <h3><%= value.title%></h3>
       <h4><%= value.author%></h4>
       <p><%= value.description%></p>
-      <p><a href="/books/<%= value.id %>">View Details</a></p>
-      <form action="/addToFavorites" method="POST">
-        <input type="text" name="title" value="<%= value.title%>">
-        <input type="text" name="author" value="<%= value.author%>">
-        <input type="text" name="description" value="<%= value.description%>">
-        <input type="text" name="thumbnail" value="<%= value.thumbnail%>">
-        <input type="text" name="isbn" value="<%= value.ibsn%>">
-        <input type="text" name="bookshelf" value="<%= value.bookshelf%>">
-        <input type="submit" value="Add to Favorites">
+      <form action="/books" method="POST">
+        <input id="details"type="submit" value="Add to Favorites">
+        <input class="formData" type="text" name="title" value="<%= value.title%>">
+        <input class="formData" type="text" name="author" value="<%= value.author%>">
+        <input class="formData" type="text" name="description" value="<%= value.description%>">
+        <input class="formData" type="text" name="thumbnail" value="<%= value.thumbnail%>">
+        <input class="formData" type="text" name="isbn" value="<%= value.isbn%>">
+        <input class="formData" type="text" name="bookshelf" value="<%= value.bookshelf%>">
       </form>
     </section>
     <%})%>
   </div>
   <%- include('../books/footer') %>
-</body>
+  </body>
+</div>
+
 
 </html>
