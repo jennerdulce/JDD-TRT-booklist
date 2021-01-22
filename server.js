@@ -20,8 +20,10 @@ client.on('error', err => {
 
 // Routes
 app.get('/', defaultHandler);
-app.get('/books/:id', bookDetails);
-app.post('/newSearches', newSearchHandler);
+app.get('/books/:id', viewDetailsHandler);
+app.get('/newSearch', newSearchHandler);
+app.post('/apiSearch', apiSearchHandler);
+// app.post('/addToFavorites', favoritesHandler);
 
 // Handlers
 function defaultHandler(req, res) {
@@ -32,13 +34,12 @@ function defaultHandler(req, res) {
       res.status(200).render('pages/index', { data: databaseBooks });
     })
     .catch(err => {
-      // handleError(res);
       console.log(err);
     });
 
 }
 
-function bookDetails(req, res) {
+function viewDetailsHandler(req, res) {
   let SQL = 'SELECT * FROM books WHERE id = $1';
   let values = [req.params.id];
 
@@ -49,14 +50,17 @@ function bookDetails(req, res) {
       res.status(200).render('pages/books/show', { data: details });
     })
     .catch(err => {
-      // handleError(res);
       console.log(err);
     });
 
 }
 
 function newSearchHandler(req, res) {
-  // console.log('req.query >>>>>>>>> ', req.body);
+  res.status(200).render('pages/searches/new');
+}
+
+function apiSearchHandler(req, res) {
+  // console.log('req.body >>>>>>>>> ', req.body);
 
   let url = `https://www.googleapis.com/books/v1/volumes?q=`;
   if (req.body.keyword === 'title') {
@@ -73,10 +77,10 @@ function newSearchHandler(req, res) {
       // console.log('value.body >>>>>>>>> ', value.body.items);
       const bookData = value.body.items;
       const books = bookData.map(value => {
-        return new Book(value);
+        return new Book(value.volumeInfo);
       });
       // console.log('we are in the superagent ============');
-      res.status(200).render('pages/searches/new', { data: books });
+      res.status(200).render('pages/searches/results', { data: books });
     })
     .catch(err => {
       // handleError(res);
@@ -85,19 +89,29 @@ function newSearchHandler(req, res) {
 
 }
 
+// function favoritesHandler(req, res) {
+//   let SQL = `INSERT INTO favorites
+//             (title, author, description, thumbnail, isbn, bookshelf)
+//             VALUES ($1, $2, $3, $4, $5, $6);`;
+//   let safeValues = [req.body.title, req.body.author, req.body.description, req.body.thumbnail, req.body.isbn, req.body.bookshelf];
+//   client.query(SQL, safeValues)
+//     .then(() => {
+//       alert(`${req.body.title} added to your favorites list!`);
+//     });
+// }
+
 function handleError(res) {
   return res.status(500).render('pages/error');
 }
 
 // let placeholder = `https://i.imgur.com/J5LVHEL.jpg`;
-
 function Book(data) {
-  this.title = data.volumeInfo.title;
-  this.author = data.volumeInfo.authors;
-  this.description = data.volumeInfo.description || '*** Description current unavailable ***';
-  this.thumbnail = data.volumeInfo.imageLinks.thumbnail || null;
-  this.isbn = data.volumeInfo.industryIdentifiers[0].identifier;
-  this.bookshelf = data.volumeInfo.mainCategory;
+  this.title = data.title;
+  this.author = data.author;
+  this.description = data.description || '*** Description current unavailable ***';
+  this.thumbnail = data.imageLinks.thumbnail || null;
+  this.isbn = data.industryIdentifiers[0].identifier;
+  this.bookshelf = data.mainCategory;
 }
 
 

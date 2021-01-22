@@ -213,7 +213,8 @@ footer {
 }
 
 footer a {
-  color: white
+  color: white;
+  text-decoration: none;
 }
 
 @media (min-width: 1025px){
