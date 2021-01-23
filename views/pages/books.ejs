@@ -4,21 +4,22 @@
   <%- include('books/head') %>
 </head>
 
-<body id="books">
-  <%- include('books/navbar') %>
-  <h2>Search Results</h2>
-  <!-- <p><a href="/searches">New Search</a></p> -->
-  <div id="books-div">
-    <% data.forEach(value => { %>
-    <section>
-      <img src="<%= value.thumbnail%>" alt="<%= value.title%>">
-      <h3><%= value.title%></h3>
-      <h4><%= value.author%></h4>
-      <p><%= value.description%></p>
-    </section>
-    <%})%>
-  </div>
-  <%- include('books/footer') %>
-</body>
-
+<div id="container">
+  <body id="results">
+    <%- include('books/navbar') %>
+    <h2>Search Results</h2>
+    <!-- <p><a href="/searches">New Search</a></p> -->
+    <div id="books-div">
+      <% data.forEach(value => { %>
+      <section>
+        <img src="<%= value.thumbnail%>" alt="<%= value.title%>">
+        <h3><%= value.title%></h3>
+        <h4><%= value.author%></h4>
+        <p><%= value.description%></p>
+      </section>
+      <%})%>
+    </div>
+    <%- include('books/footer') %>
+  </body>
+</div>
 </html>
