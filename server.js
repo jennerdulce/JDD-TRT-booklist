@@ -99,16 +99,18 @@ function booksHandler(req, res) {
   client.query(SQL, safeValues)
     .then(() => {
       console.log(`${req.body.title} added to your favorites list!`);
+
+      res.status(200).redirect('/');
     });
 
-  let retrieveBook = 'SELECT * FROM books WHERE title = $1';
-  let values = [req.body.title];
-  client.query(retrieveBook, values)
-    .then(results => {
-      let details = results.rows[0];
-      res.status(200).render('pages/books/show', { data: details }
-      );
-    });
+//   let retrieveBook = 'SELECT * FROM books WHERE title = $1';
+//   let values = [req.body.title];
+//   client.query(retrieveBook, values)
+//     .then(results => {
+//       let details = results.rows[0];
+//       res.status(200).render('pages/books/show', { data: details }
+//       );
+//     });
 }
 
 function handleError(res) {
