@@ -5,6 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
+const methodOverride = require('method-override');
 
 // Start Application
 const app = express();
@@ -13,6 +14,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
 
 client.on('error', err => {
   throw err;
@@ -24,9 +26,50 @@ app.get('/books/:id', viewDetailsHandler);
 app.post('/books', booksHandler);
 app.get('/newSearch', newSearchHandler);
 app.post('/apiSearch', apiSearchHandler);
+app.get('/edit/:id', editHandler);
+app.put('/update/:id', updateHandler);
+app.delete('/delete/:id', deleteHandler);
 
 
 // Handlers
+function editHandler(req, res) {
+  let SQL = 'SELECT * FROM books WHERE id=$1';
+  let values = [req.params.id];
+
+  client.query(SQL, values)
+    .then(results => {
+      let details = results.rows[0];
+      res.status(200).render('pages/edit', { data: details});
+    });
+}
+
+function deleteHandler(req, res){
+  let SQL = 'DELETE FROM books WHERE id= $1';
+  let values = [req.params.id];
+
+  client.query(SQL, values)
+    .then(() => {
+      res.status(200).redirect('/');
+    });
+}
+
+function updateHandler(req, res) {
+  let SQL = `UPDATE books
+             SET title = $1, 
+                author = $2,
+                description = $3,
+                thumbnail = $4, 
+                isbn = $5, 
+                bookshelf = $6 
+             WHERE id=$7`;
+  let safeValues = [req.body.title, req.body.author, req.body.description, req.body.thumbnail, req.body.isbn, req.body.bookshelf, req.body.id];
+
+  client.query(SQL, safeValues)
+    .then(() => {
+      res.status(200).redirect('/');
+    });
+}
+
 function defaultHandler(req, res) {
   let SQL = 'SELECT * FROM books';
   client.query(SQL)
