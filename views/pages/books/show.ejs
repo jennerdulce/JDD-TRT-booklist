@@ -12,8 +12,15 @@
     <div id="show-div">
       <%- include('detail') %>
     </div>
+    <form action="/edit/<%= data.id %>" method="GET">
+      <button>Update Details</button>
+    </form>
+    <form action="/delete/<%= data.id %>?_method=DELETE" method="POST">
+      <button>Delete</button>
+    </form>
     <%- include('footer') %>
   </body>
+  
 </div>
 
 </html>
