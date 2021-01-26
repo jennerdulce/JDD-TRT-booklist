@@ -1,27 +1,27 @@
 <html lang="en">
 
 <head>
-  <%- include('books/head') %>
+  <%- include('../layout/head') %>
 </head>
 
 
 <div id="container">
 
   <body id="results">
-    <%- include('books/navbar') %>
+    <%- include('../layout/navbar') %>
     <div id="show-div">
-      <form action="/update/<%= data.id %>?_method=PUT" method="POST">
-        <input type="text" name="title" value="<%= data.title %>">
-        <input type="text" name="author" value="<%= data.author %>">
-        <input type="text" name="isbn" value="<%= data.isbn %>">
-        <input type="text" name="thumbnail" value="<%= data.thumbnail %>">
-        <input type="text" name="bookshelf" value="<%= data.bookshelf %>">
-        <input type="text" name="description" value="<%= data.description %>">
-        <input type="hidden" name="id" value="<%= data.id %>">
-        <button>Update</button>
+      <form id="update-form" action="/update/?_method=PUT" method="POST">
+        <input class="update" type="text" name="title" value="<%= data.title %>">
+        <input class="update" type="text" name="author" value="<%= data.author %>">
+        <input class="update" type="text" name="isbn" value="<%= data.isbn %>">
+        <input class="update" type="text" name="thumbnail" value="<%= data.thumbnail %>">
+        <input class="update" type="text" name="bookshelf" value="<%= data.bookshelf %>">
+        <input class="update" type="textarea" name="description" value="<%= data.description %>">
+        <input class="update" type="hidden" name="id" value="<%= data.id %>">
+        <button id="update-button">Update</button>
       </form>
     </div>
-    <%- include('books/footer') %>
+    <%- include('../layout/footer') %>
   </body>
   
 </div>

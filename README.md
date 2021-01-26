@@ -27,14 +27,34 @@ SUPERAGENT - Allows us to request data by using a URL from APIs and obtains a PR
 
 APIs - Retrieve data from DATABASES.
 
+Postgres - Ability to store and retrieve information through a database.
+
+MethodOverride - Allows the program to utilize PUT and DELETE commands.
+
 ## Change Log
 01-18-2020 8:50pm - Initial creation of Book List App. Fully functional with base CSS.
 
-## Credits and Collaborations
+01-21-2020 11:54pm - Implemented usage of database, storing items, and retrieving information upon command.
 
+01-23-2020 11:31pm - Implemented method override to be able to use 'PUT' and 'DELETE' statements to EDIT and DELETE from the database
+
+## Credits and Collaborations
+Taylor Thorton and Jenner Dulce
 
 Number and name of feature: Lab 11: EJS
 Estimate of time needed to complete: 4~ hours with the code and 6~ with css.
 Start time: 8:54pm - 11:50pm and 12pm-3:00pm
 Finish time: 4:10pm
 Actual time needed to complete: 6~
+
+Number and name of feature: Lab 12: Components and Forms
+Estimate of time needed to complete: roughly 5~ hours.
+Start time: 7:00pm ;
+Finish time: 11:59pm;
+Actual time needed to complete: 5~
+
+Number and name of feature: Lab 13: Resource Update and Delete
+Estimate of time needed to complete: roughly 6~ hours.
+Start time: 8:30pm;
+Finish time: 11:31pm;
+Actual time needed to complete: 3~
