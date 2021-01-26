@@ -1,17 +1,13 @@
 <html lang="en">
 
 <head>
-  <%- include('../books/head') %>
+  <%- include('../../layout/head') %>
 </head>
-
-
 <div id="container">
 
   <body id="results">
-  <%- include('../books/navbar') %>
-  <h2> <%= data.length %> Search Results</h2>
-  <!-- <p><a href="/newSearch">New Search</a></p>
-    <p><a href="/">Home</a></p> -->
+  <%- include('../../layout/navbar') %>
+  <h2> <span><%= data.length %></span> Search Results</h2>
   <div id="results-div">
 
     <% data.forEach(value => { %>
@@ -19,7 +15,7 @@
       <img src="<%= value.thumbnail%>" alt="<%= value.title%>">
       <h3><%= value.title%></h3>
       <h4><%= value.author%></h4>
-      <p><%= value.description%></p>
+      <p id="book-description"><%= value.description%></p>
       <form action="/books" method="POST">
         <input id="details"type="submit" value="Add to Favorites">
         <input class="formData" type="text" name="title" value="<%= value.title%>">
@@ -28,11 +24,13 @@
         <input class="formData" type="text" name="thumbnail" value="<%= value.thumbnail%>">
         <input class="formData" type="text" name="isbn" value="<%= value.isbn%>">
         <input class="formData" type="text" name="bookshelf" value="<%= value.bookshelf%>">
+        <!-- can also use "HIDDEN"
+        <input class="formData" type="hidden" name="bookshelf" value="<%= value.bookshelf%>"> -->
       </form>
     </section>
     <%})%>
   </div>
-  <%- include('../books/footer') %>
+  <%- include('../../layout/footer') %>
   </body>
 </div>
 

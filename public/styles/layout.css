@@ -1,21 +1,23 @@
+body {
+  width: 480px;
+  max-width: 767px;
+  min-width: 480px;
+  margin: auto;
+  margin-top: 100px;
+  font-family: 'Oswald', sans-serif;
+  color: rgba(28, 28, 28, 0.793);
+}
+
 #container {
-  background-color: grey;
+  background-color: rgb(170, 170, 170);
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 960px;
+  width: 480px;
   margin: auto;
 }
 
-/* BOOKS LAYOUT */
-
-#books nav {
-  display: flex;
-  color: white;
-  background-color: black;
-}
-
-#books h1, #books #burger {
+h1, #burger p {
   height: 100px;
   line-height: 100px;
   font-size: 40px;
@@ -24,17 +26,71 @@
   /* align-items: center; */
 }
 
-#books h1 {
+h1 {
   flex-grow: 2;
   text-align: left;
   padding-left: 30px;
+  font-family: 'Prata', serif;
 }
 
-#books #burger {
+nav {
+  display: flex;
+  color: white;
+  background-color: black;
+  font-family: 'Questrial', sans-serif;
+}
+
+body {
+  font-family: 'Questrial', sans-serif;
+}
+
+a:hover, a:visited, a:active, a:link, #update-button, #show-div button {
+  color: white;
+  text-decoration: none;
+}
+
+#burger i{
   text-align: right;
   padding-right: 30px;
+  color: white;
+  font-size: 50px;
+  line-height: 100px
 }
 
+#burger-menu li {
+  background-color: rgba(0, 0, 0, .80);
+  color: white;
+  font-size: 28px;
+  padding: 5px 0px
+}
+
+footer {
+  background-color: black;
+  margin: auto;
+  width: 480px;
+  margin-top: 400px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  font-size: 48px;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+span {
+  color: white;
+  background-color: black;
+  font-size: 30px;
+  border-radius: 50px;
+  padding: 8px;
+
+}
+
+/* BOOKS LAYOUT */
 #books h2 {
   height: 100px;
   background-color: rgb(88, 88, 88);
@@ -61,17 +117,7 @@
   color: black
 }
 
-#books-div {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-around; */
-}
-
 #books-div section {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
-    /* color: rgb(124, 124, 124); */
   margin: auto;
   height: 850px;
   background-color: rgb(221, 221, 221);
@@ -102,32 +148,6 @@
 
 /* SHOW LAYOUT */
 
-#show nav {
-  display: flex;
-  color: white;
-  background-color: black;
-}
-
-#show h1, #show #burger {
-  height: 100px;
-  line-height: 100px;
-  font-size: 40px;
-  background-color: black;
-  color: white;
-  /* align-items: center; */
-}
-
-#show h1 {
-  flex-grow: 2;
-  text-align: left;
-  padding-left: 30px;
-}
-
-#show #burger {
-  text-align: right;
-  padding-right: 30px;
-}
-
 #show h2 {
   height: 100px;
   background-color: rgb(88, 88, 88);
@@ -138,7 +158,7 @@
 
 #show h3 {
   margin-top: 20px;
-  font-size: 24px;
+  font-size: 12px;
   color: white;
   text-shadow: 2px 2px rgb(33, 33, 33);
 }
@@ -146,7 +166,7 @@
 
 #show h4 {
   margin-top: 15px;
-  font-size: 20px;
+  font-size: 12px;
   font-style: italic;
   color: rgb(20, 20, 20);
 }
@@ -158,17 +178,13 @@
 }
 
 #show-div section {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
-    /* color: rgb(124, 124, 124); */
   margin: auto;
-  height: 1000px;
+  height: 690px;
   background-color: rgb(221, 221, 221);
-  margin-top: 70px;
-  width: 600px;
+  margin-top: 40px;
+  width: 300px;
   box-shadow: 3px 5px 15px rgba(0, 0, 0, .50);
-  padding: 0px 30px;
+  padding: 0px 10px;
   border-radius: 20px;
 }
 
@@ -177,59 +193,34 @@
   padding-top: 35px;
   display: block;
   text-align: center;
-  width: 350px
+  width: 250px
 }
 
-#show p {
+
+#show-div p {
   background-color: rgb(246, 246, 246);
   color: black;
-  font-size: 18px;
+  font-size: 12px;
   margin-top: 20px;
-  padding: 20px 80px;
-  line-height: 26px;
-  height: 130px;
+  padding: 2px 6px;
+  line-height: 16px;
+  height: 80px;
   overflow: auto;
   text-align: left;
   text-indent: 2em;
   display: inline-block;
 }
 
-
-@media (min-width: 1025px){
-  body {
-    min-width: 960px;
-    margin: auto;
-    margin-top: 100px;
-  }
+#show-div button {
+  cursor: pointer;
+  padding: 4px 10px;
+  font-size: 14;
+  background-color: black;
+  border-radius: 15px;
+  border: none;
 }
-
 
 /* INDEX */
-#index nav {
-  display: flex;
-  color: white;
-  background-color: black;
-}
-
-#index h1, #index #burger {
-  height: 100px;
-  line-height: 100px;
-  font-size: 40px;
-  background-color: black;
-  color: white;
-  /* align-items: center; */
-}
-
-#index h1 {
-  flex-grow: 2;
-  text-align: left;
-  padding-left: 30px;
-}
-
-#index #burger {
-  text-align: right;
-  padding-right: 30px;
-}
 
 #index h2 {
   height: 100px;
@@ -258,14 +249,12 @@
 }
 
 #index-div section {
-
   margin: auto;
-  height: 860px;
+  height: 660px;
   background-color: rgb(221, 221, 221);
   margin-top: 70px;
-  width: 630px;
+  width: 300px;
   box-shadow: 3px 5px 15px rgba(0, 0, 0, .50);
-
 }
 
 #index img {
@@ -273,7 +262,7 @@
   padding-top: 35px;
   display: block;
   text-align: center;
-  width: 350px
+  width: 250px
 }
 
 #index #description {
@@ -305,56 +294,14 @@
   text-decoration: none;
 }
 
-#index span {
-  color: white;
-  background-color: black;
-  font-size: 30px;
-  border-radius: 50px;
-  padding: 8px;
 
-}
-
-
-/* new LAYOUT */
-
-
-#new form {
-  width: 720px;
-  margin: auto
-}
-
-#new h1, #new p {
-  height: 140px;
-  line-height: 140px;
-  font-size: 40px;
-  background-color: black;
-  color: white;
-  /* align-items: center; */
-}
-
-#new h1 {
-  flex-grow: 2;
-  text-align: left;
-  padding-left: 30px;
-}
-
-#new p {
-  text-align: right;
-  padding-right: 30px;
-}
-
+/* NEW LAYOUT */
 #new h2 {
   height: 100px;
   background-color: rgb(88, 88, 88);
   color: white;
   font-size: 30px;
   line-height: 100px;
-}
-
-#new nav {
-  display: flex;
-  color: white;
-  background-color: black;
 }
 
 #new input[type="text"], #new input[type="submit"] {
@@ -373,24 +320,19 @@
   /* text-align: left; */
 }
 
-#new div {
-  margin-top: 30px;
-  padding: 30px 0px 30px 30px;
-  text-align: left;
-}
-
 #new #title, #new #author {
   font-size: 30px;
   border: none;
   border-radius: 10px;
   background-color: rgb(222, 222, 222);
-  /* text-align: left; */
-  /* padding: 30px 250px; */
+  text-align: left;
+  padding: 30px 0px 30px 10px;
+  margin-top: 20px
 }
 
 #new input[type="submit"] {
   margin-top: 30px;
-  font-size: 46px;
+  font-size: 30px;
   width: 100%;
   border: none;
   border-radius: 10px;
@@ -410,59 +352,18 @@
   margin: 30px 0px
 }
 
-footer {
-  background-color: black;
-  margin: auto;
-  width: 960px;
-  margin-top: 400px;
-  color: white;
-  display: flex;
-  justify-content: space-around;
-  font-size: 48px;
-  text-align: center;
-}
-
-footer a {
-  color: white;
-  text-decoration: none;
+#search-options {
+  padding: 30px
 }
 
 
 /* RESULTS */
 .formData {
-  /* visibility: hidden; */
   display: none;
 }
 
 
 /* SHOW LAYOUT */
-
-#results nav {
-  display: flex;
-  color: white;
-  background-color: black;
-}
-
-#results h1, #results #burger {
-  height: 100px;
-  line-height: 100px;
-  font-size: 40px;
-  background-color: black;
-  color: white;
-  /* align-items: center; */
-}
-
-#results h1 {
-  flex-grow: 2;
-  text-align: left;
-  padding-left: 30px;
-}
-
-#results #burger {
-  text-align: right;
-  padding-right: 30px;
-}
-
 #results h2 {
   height: 100px;
   background-color: rgb(88, 88, 88);
@@ -472,8 +373,8 @@ footer a {
 }
 
 #results h3 {
-  margin-top: 20px;
-  font-size: 24px;
+  margin-top: 14px;
+  font-size: 12px;
   color: white;
   text-shadow: 2px 2px rgb(33, 33, 33);
 }
@@ -481,27 +382,17 @@ footer a {
 
 #results h4 {
   margin-top: 15px;
-  font-size: 20px;
+  font-size: 10px;
   font-style: italic;
   color: rgb(20, 20, 20);
 }
 
-#results-div {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-around; */
-}
-
 #results-div section, #results-div section {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
-    /* color: rgb(124, 124, 124); */
   margin: auto;
-  height: 1000px;
+  height: 660px;
   background-color: rgb(221, 221, 221);
   margin-top: 70px;
-  width: 600px;
+  width: 300px;
   box-shadow: 3px 5px 15px rgba(0, 0, 0, .50);
   padding: 0px 30px;
   border-radius: 20px;
@@ -512,17 +403,17 @@ footer a {
   padding-top: 35px;
   display: block;
   text-align: center;
-  width: 350px
+  width: 250px
 }
 
-#results p {
+#results #book-description {
   background-color: rgb(246, 246, 246);
   color: black;
-  font-size: 18px;
+  font-size: 12px;
   margin-top: 20px;
-  padding: 20px 80px;
-  line-height: 26px;
-  height: 130px;
+  padding: 2px 6px;
+  line-height: 16px;
+  height: 80px;
   overflow: auto;
   text-align: left;
   text-indent: 2em;
@@ -531,12 +422,360 @@ footer a {
 
 #results #details {
   margin: auto;
-  margin-top: 40px;
-  padding: 30px 20px;
-  font-size: 30;
+  margin-top: 10px;
+  padding: 8px 10px;
+  font-size: 20;
   color: white;
   background-color: black;
   border-radius: 15px;
   border: none;
   cursor: pointer;
+}
+
+#results-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+/* EDIT PAGE */
+.update {
+  display: block;
+  font-size: 16px;
+  width: 98%;
+  padding: 5px 10px;
+  margin: 15px 5px;
+  border-radius: 12px;
+  border: none;
+}
+
+input[type='textarea'] {
+  height: 200px;
+  word-wrap: normal;
+}
+
+#update-button {
+  cursor: pointer;
+  float: right;
+  margin-right: 50px;
+  margin-top: 50px;
+  padding: 20px 30px;
+  font-size: 30px;
+  background-color: black;
+  border-radius: 15px;
+  border: none;
+}
+
+
+
+
+@media (min-width: 1025px){
+  body {
+    min-width: 960px;
+    margin-top: 100px;
+  }
+
+  #container {
+    background-color: rgb(170, 170, 170);
+    width: 960px;
+  }
+  
+  h1, #burger p {
+    height: 100px;
+    line-height: 100px;
+    font-size: 40px;
+    /* align-items: center; */
+  }
+  
+  h1 {
+    flex-grow: 2;
+    padding-left: 30px;
+  }
+  
+  #burger i{
+    padding-right: 30px;
+    font-size: 50px;
+    line-height: 100px
+  }
+  
+  #burger-menu li {
+    background-color: rgba(0, 0, 0, .80);
+    font-size: 28px;
+    padding: 5px 0px
+  }
+  
+  footer {
+    width: 960px;
+    margin-top: 400px;
+    font-size: 48px;
+  }
+  
+
+  span {
+    font-size: 30px;
+    border-radius: 50px;
+    padding: 8px;
+  
+  }
+  
+  /* BOOKS LAYOUT */
+  #books h2 {
+    height: 100px;
+    font-size: 30px;
+    line-height: 100px;
+  }
+  
+  #books h3 {
+    margin-top: 20px;
+    font-size: 24px;
+    text-shadow: 2px 2px rgb(33, 33, 33);
+  }
+  
+  #books h5 {
+    margin-top: 15px;
+    font-size: 20px;
+    color: rgb(20, 20, 20);
+  }
+  
+  #books-div section {
+    height: 850px;
+    background-color: rgb(221, 221, 221);
+    margin-top: 70px;
+    width: 630px;
+    box-shadow: 3px 5px 15px rgba(0, 0, 0, .50);
+  
+  }
+  
+  #books img {
+    padding-top: 35px;
+    width: 350px
+  }
+  
+  #books p {
+    margin-top: 20px;
+    padding: 20px 80px;
+    line-height: 24px;
+    height: 150px;
+    text-indent: 2em;
+  }
+  
+  
+  /* SHOW LAYOUT */
+  
+  #show h2 {
+    height: 100px;
+    font-size: 30px;
+    line-height: 100px;
+  }
+  
+  #show h3 {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  
+  #show h4 {
+    margin-top: 15px;
+    font-size: 20px;
+    color: rgb(20, 20, 20);
+  }
+  
+  #show-div section {
+    height: 1000px;
+    background-color: rgb(221, 221, 221);
+    margin-top: 70px;
+    width: 600px;
+    box-shadow: 3px 5px 15px rgba(0, 0, 0, .50);
+    padding: 0px 30px;
+    border-radius: 20px;
+  }
+  
+  #show img {
+    padding-top: 35px;
+    width: 350px
+  }
+  
+  #show-div p {
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 20px 80px;
+    line-height: 26px;
+    height: 130px;
+    text-indent: 2em;
+  }
+  
+  #show-div button {
+    padding: 20px 30px;
+    font-size: 30;
+    border-radius: 15px;
+  }
+  
+  /* INDEX */
+  
+  #index h2 {
+    height: 100px;
+    font-size: 30px;
+    line-height: 100px;
+  }
+  
+  #index h3 {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  #index h4 {
+    margin-top: 15px;
+    font-size: 16px;
+  }
+  
+  #index p {
+  }
+  
+  #index-div section {
+    height: 860px;
+    background-color: rgb(221, 221, 221);
+    margin-top: 70px;
+    width: 630px;
+    box-shadow: 3px 5px 15px rgba(0, 0, 0, .50);
+  
+  }
+  
+  #index img {
+    padding-top: 35px;
+    width: 350px
+  }
+  
+  #index #description {
+    margin-top: 20px;
+    padding: 20px 80px;
+    line-height: 24px;
+    height: 150px;
+    text-indent: 2em;
+  }
+  
+  #index #details {
+    margin-top: 60px;
+  }
+  
+  #index #details a {
+    padding: 30px 20px;
+    font-size: 30;
+    border-radius: 15px;
+  }
+  
+  /* NEW LAYOUT */
+  #new h2 {
+    height: 100px;
+    font-size: 30px;
+    line-height: 100px;
+  }
+  
+  #new input[type="text"] {
+    margin-top: 30px;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 35px 0px 35px 30px;
+    width: 100%;
+    /* text-align: left; */
+  }
+  
+  #new #title, #new #author {
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 30px 0px 30px 10px;
+    margin-top: 20px
+  }
+  
+  #new input[type="submit"] {
+    margin-top: 30px;
+    font-size: 46px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 30px 0px;
+  }
+  
+  .social:hover, .social:active, .social:link {
+    margin: 30px 0px
+  }
+  
+  #search-options {
+    padding: 30px
+  }
+  
+  /* SHOW LAYOUT */
+  #results h2 {
+    height: 100px;
+    font-size: 30px;
+    line-height: 100px;
+  }
+  
+  #results h3 {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  
+  #results h4 {
+    margin-top: 15px;
+    font-size: 20px;
+  }
+  
+  #results-div section, #results-div section {
+    height: 1000px;
+    background-color: rgb(221, 221, 221);
+    margin-top: 70px;
+    width: 600px;
+    box-shadow: 3px 5px 15px rgba(0, 0, 0, .50);
+    padding: 0px 30px;
+    border-radius: 20px;
+  }
+  
+  #results img {
+    padding-top: 35px;
+    width: 350px
+  }
+  
+  #results #book-description {
+    background-color: rgb(246, 246, 246);
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 20px 80px;
+    line-height: 26px;
+    height: 130px;
+    text-indent: 2em;
+  }
+  
+  #results #details {
+    margin-top: 40px;
+    padding: 30px 20px;
+    font-size: 30;
+    border-radius: 15px;
+  }
+  
+  #results-buttons {
+    margin-top: 20px;
+  }
+  
+  /* EDIT PAGE */
+  .update {
+    font-size: 30px;
+    width: 98%;
+    padding: 5px 10px;
+    margin: 30px 10px;
+    border-radius: 12px;
+  }
+  
+  input[type='textarea'] {
+    height: 300px;
+  }
+  
+  #update-button {
+    margin-right: 50px;
+    margin-top: 50px;
+    padding: 20px 30px;
+    font-size: 30;
+    border-radius: 15px;
+
+  }
+  
 }

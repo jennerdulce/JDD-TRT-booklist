@@ -1,15 +1,14 @@
 <html lang="en">
 
 <head>
-  <%- include('books/head') %>
+  <%- include('../layout/head') %>
 </head>
 
 <div id="container">
 
   <body id="index">
-    <%- include('books/navbar') %>
+    <%- include('../layout/navbar') %>
     <h2> <span><%= data.length %></span> Search Results</h2>
-    <p><a href="/newSearch">Search the Google Books API</a></p>
     <div id="index-div">
       <% data.forEach(value => { %>
       <section>
@@ -20,7 +19,8 @@
       </section>
       <%})%>
     </div>
-    <%- include('books/footer') %>
+    <%- include('../layout/footer') %>
+    <script src="app.js"></script>
   </body>
 </div>
 </html>
